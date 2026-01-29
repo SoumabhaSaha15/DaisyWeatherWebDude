@@ -40,7 +40,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2 w-full p-3">
 
       {/* 1. TIME & DATE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body relative overflow-hidden p-6">
           <div className="flex justify-between items-start z-10">
             <div className="badge badge-primary badge-soft hover:badge-outline gap-2 font-bold">Today {`${weather.name}, ${weather.sys.country}`}</div>
@@ -63,7 +63,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
       </div>
 
       {/* 2. WIND GAUGE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body items-center relative p-4">
           <div className="w-full flex justify-between items-center mb-1">
             <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest flex gap-2 items-center">
@@ -104,7 +104,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
       </div>
 
       {/* 3. VISIBILITY & PRESSURE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body p-5">
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Visibility</h2>
@@ -133,7 +133,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
       </div>
 
       {/* 4. TEMPERATURE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body justify-between p-6">
           <div className="flex justify-between items-start">
             <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Temperature</h2>
@@ -162,7 +162,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
       </div>
 
       {/* 5. HUMIDITY */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body items-center justify-center relative p-4">
           <div className="absolute top-4 left-4 flex items-center gap-2">
             <WiHumidity className="text-3xl" />
@@ -179,7 +179,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
       </div>
 
       {/* 6. SUN/MOON */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100">
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body relative overflow-hidden p-5">
           <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest z-10 flex justify-between">
             <span>Sun Cycle</span>

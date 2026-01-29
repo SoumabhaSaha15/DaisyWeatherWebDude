@@ -6,7 +6,7 @@ import WeatherCity from "./components/weather/City";
 import ForecastCity from "./components/forecast/City";
 import WeatherCoords from "./components/weather/Coords";
 import { useModal } from "./context/modal/ModalContext";
-import { useCachedCities } from "./hooks/useCachedCities";
+import { useCachedCities } from "./hooks/cachedCities";
 import ForecastCoords from "./components/forecast/Coords";
 import { useState, useRef, type FC, useMemo } from "react";
 import useGeolocation from "./context/geolocation/GeolocationContext";

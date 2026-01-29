@@ -20,7 +20,7 @@ const Forecast: FC<ForecastResponse> = (forecast) => {
 
   return (
     // SPAN 2 ROWS to accommodate the list height naturally in the grid
-    <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 m-4">
+    <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 m-4  animate-wiggle">
       <div className="card-body p-5 overflow-hidden">
         {/* Header */}
         <div className="flex justify-between items-center mb-2">

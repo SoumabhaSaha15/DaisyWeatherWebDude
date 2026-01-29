@@ -242,3 +242,15 @@ html[data-theme] {
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
+
+@theme {
+  --animate-wiggle: wiggle 0.5s linear forwards;
+  @keyframes wiggle {
+    0% {
+      transform: scale(0) ;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
