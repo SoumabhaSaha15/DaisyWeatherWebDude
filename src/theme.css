@@ -1,0 +1,220 @@
+/* 1. DAWN: Softened - Muted Rose & Warm Grey */
+@plugin "daisyui/theme" {
+  name: "dawn";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Backgrounds: Softer, slightly darker pink-white (was 99% -> 97%) */
+  --color-base-100: oklch(97% 0.01 320); 
+  --color-base-200: oklch(94% 0.02 320);
+  --color-base-300: oklch(91% 0.03 320);
+  
+  /* Content: Softer dark grey-purple (was 15% -> 30%) */
+  --color-base-content: oklch(30% 0.04 320);
+
+  /* Primary: Muted Pink (Chroma 0.18 -> 0.12) */
+  --color-primary: oklch(70% 0.12 340); 
+  --color-primary-content: oklch(98% 0.01 340);
+
+  /* Secondary: Soft Blue (Chroma 0.15 -> 0.08) */
+  --color-secondary: oklch(75% 0.08 240); 
+  --color-secondary-content: oklch(20% 0.05 240);
+
+  /* Accent: Soft Gold (Chroma 0.18 -> 0.10) */
+  --color-accent: oklch(80% 0.10 90); 
+  --color-accent-content: oklch(20% 0.05 90);
+  
+  --color-neutral: oklch(30% 0.02 290);
+  --color-neutral-content: oklch(95% 0.01 290);
+
+  --color-info: oklch(75% 0.10 240);
+  --color-info-content: oklch(20% 0.05 240);
+  
+  --color-success: oklch(75% 0.12 160);
+  --color-success-content: oklch(20% 0.05 160);
+  
+  --color-warning: oklch(85% 0.12 90);
+  --color-warning-content: oklch(20% 0.05 90);
+  
+  --color-error: oklch(70% 0.15 25);
+  --color-error-content: oklch(98% 0.01 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* 2. MORNING: Softened - Airy Blue & Charcoal */
+@plugin "daisyui/theme" {
+  name: "morning";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Backgrounds: Off-white (was 100% -> 98%) */
+  --color-base-100: oklch(98% 0.005 250);     
+  --color-base-200: oklch(95% 0.01 250);
+  --color-base-300: oklch(92% 0.02 250);
+  
+  /* Content: Charcoal Grey (was 10% -> 25%) */
+  --color-base-content: oklch(25% 0.02 250);
+
+  /* Primary: Calmer Sky Blue (Chroma 0.22 -> 0.14) */
+  --color-primary: oklch(60% 0.14 250);   
+  --color-primary-content: oklch(98% 0 0);
+
+  /* Secondary: Sage Green (Chroma 0.20 -> 0.10) */
+  --color-secondary: oklch(70% 0.10 150); 
+  --color-secondary-content: oklch(20% 0.02 150);
+
+  /* Accent: Soft Coral (Chroma 0.22 -> 0.12) */
+  --color-accent: oklch(65% 0.12 30);     
+  --color-accent-content: oklch(98% 0 0);
+
+  --color-neutral: oklch(30% 0.02 250);
+  --color-neutral-content: oklch(98% 0 0);
+
+  --color-info: oklch(70% 0.12 240);
+  --color-success: oklch(65% 0.15 140);
+  --color-warning: oklch(80% 0.15 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: oklch(65% 0.18 30);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* 3. NOON: Softened - Warm Sand & Earth */
+@plugin "daisyui/theme" {
+  name: "noon";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* Backgrounds: Creamier (was 99% -> 97%) */
+  --color-base-100: oklch(97% 0.02 85); 
+  --color-base-200: oklch(94% 0.03 85);
+  --color-base-300: oklch(90% 0.04 85);
+  
+  /* Content: Warm Brown (was 12% -> 25%) */
+  --color-base-content: oklch(25% 0.04 50);
+
+  /* Primary: Goldenrod (Chroma 0.22 -> 0.14) */
+  --color-primary: oklch(70% 0.14 70);  
+  --color-primary-content: oklch(20% 0.05 50);
+
+  /* Secondary: Terracotta (Chroma 0.22 -> 0.12) */
+  --color-secondary: oklch(60% 0.12 30); 
+  --color-secondary-content: oklch(98% 0.01 30);
+
+  /* Accent: Muted Yellow (Chroma 0.20 -> 0.12) */
+  --color-accent: oklch(80% 0.12 90);  
+  --color-accent-content: oklch(20% 0.05 50);
+
+  --color-neutral: oklch(30% 0.03 50);
+  --color-neutral-content: oklch(98% 0.01 50);
+
+  --color-info: oklch(70% 0.12 220);
+  --color-success: oklch(65% 0.14 140);
+  --color-warning: oklch(80% 0.14 80);
+  --color-warning-content: oklch(20% 0.05 50);
+  --color-error: oklch(60% 0.16 30);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* 4. EVENING: Softened - Dusk Purple & Lavender */
+@plugin "daisyui/theme" {
+  name: "evening";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Backgrounds: Lighter purple-grey (was 18% -> 22%) */
+  --color-base-100: oklch(22% 0.03 280); 
+  --color-base-200: oklch(19% 0.03 280);
+  --color-base-300: oklch(16% 0.03 280);
+  
+  /* Content: Soft White (was 96% -> 90%) */
+  --color-base-content: oklch(90% 0.02 280);
+
+  /* Primary: Muted Sunset (Chroma 0.25 -> 0.15) */
+  --color-primary: oklch(65% 0.15 20);   
+  --color-primary-content: oklch(20% 0.02 20);
+
+  /* Secondary: Muted Purple (Chroma 0.25 -> 0.12) */
+  --color-secondary: oklch(65% 0.12 300);
+  --color-secondary-content: oklch(95% 0.01 300);
+
+  /* Accent: Burnt Orange (Chroma 0.22 -> 0.14) */
+  --color-accent: oklch(75% 0.14 60);     
+  --color-accent-content: oklch(20% 0.05 60);
+
+  --color-neutral: oklch(25% 0.02 280);
+  --color-neutral-content: oklch(90% 0.01 280);
+
+  --color-info: oklch(70% 0.12 240);
+  --color-success: oklch(70% 0.14 140);
+  --color-warning: oklch(80% 0.14 50);
+  --color-warning-content: oklch(20% 0.05 50);
+  --color-error: oklch(65% 0.18 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+}
+
+/* 5. NIGHT: Softened - Deep Navy & Silver */
+@plugin "daisyui/theme" {
+  name: "night";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Backgrounds: Navy Grey (was 10% -> 18%) */
+  --color-base-100: oklch(18% 0.03 260); 
+  --color-base-200: oklch(15% 0.03 260);
+  --color-base-300: oklch(12% 0.03 260);
+  
+  /* Content: Silver White (was 98% -> 92%) */
+  --color-base-content: oklch(92% 0.01 260);
+
+  /* Primary: Soft Moon Blue (Chroma 0.18 -> 0.10) */
+  --color-primary: oklch(70% 0.10 250);  
+  --color-primary-content: oklch(15% 0.02 250);
+
+  /* Secondary: Slate Indigo (Chroma 0.20 -> 0.08) */
+  --color-secondary: oklch(60% 0.08 280); 
+  --color-secondary-content: oklch(95% 0.01 280);
+
+  /* Accent: Teal (Chroma 0.15 -> 0.10) */
+  --color-accent: oklch(80% 0.10 180);   
+  --color-accent-content: oklch(15% 0.02 180);
+
+  --color-neutral: oklch(15% 0.02 260);
+  --color-neutral-content: oklch(90% 0.01 260);
+
+  --color-info: oklch(70% 0.10 230);
+  --color-success: oklch(65% 0.12 150);
+  --color-warning: oklch(80% 0.12 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: oklch(65% 0.15 25);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --depth: 0;
+  --noise: 0;
+}
