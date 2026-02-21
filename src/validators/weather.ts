@@ -8,7 +8,10 @@ export const weatherResponseSchema = z.object({
     id: z.number(),
     main: z.string(),
     description: z.string(),
-    icon: z.string().transform((val) => `${import.meta.env.VITE_OW_ICON_URL + val}@4x.png`),
+    icon: z.string().transform((val) => {
+
+      return `${import.meta.env.VITE_OW_ICON_URL + val}@4x.png`;
+    }),
   })),
   base: z.string(),
   main: z.object({

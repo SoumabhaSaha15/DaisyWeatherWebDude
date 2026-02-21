@@ -1,43 +1,13 @@
 
 import base from "../utility/AxiosBase";
-import { type AxiosResponse } from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { type GeolocationType } from "../context/geolocation/GeolocationContext";
 import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators/query";
 import { type ForecastResponse, forecastResponseSchema } from "./../validators/forecast";
-/**
- * @name fetchWeatherByPlaceName takes placeName as input and fetches weather data from OpenWeather API
- * @throws {ZodError | AxiosError}
- * @returns {Promise<ForecastResponse>}
- */
-export const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => {
-  const response: AxiosResponse<ForecastResponse> = await base
-    .get<ForecastResponse>(
-      import.meta.env.VITE_OW_FORECAST,
-      {
-        params: placeQuerySchema.parse({ q: placeName }),
-        schema: forecastResponseSchema
-      }
-    );
-  return response.data;
-};
-/**
- * @name fetchWeatherByCoordinates takes coordinates as input and fetches weather data from OpenWeather API
- * @throws {ZodError | AxiosError}
- * @returns {Promise<ForecastResponse>}
- */
-export const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => {
-  const response: AxiosResponse<ForecastResponse> = await base
-    .get<ForecastResponse>(
-      import.meta.env.VITE_OW_FORECAST,
-      {
-        params: coordQuerySchema.parse(coords),
-        schema: forecastResponseSchema
-      }
-    );
-  return response.data;
-};
 
+export const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: placeQuerySchema.parse({ q: placeName }), schema: forecastResponseSchema })).data;
+
+export const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: coordQuerySchema.parse(coords), schema: forecastResponseSchema })).data;
 
 export const useForecastByCity = (city: string) => {
   return useQuery({
