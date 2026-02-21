@@ -25,13 +25,13 @@ export const fetchWeatherByPlaceName = async (placeName: string): Promise<Weathe
  * @throws {ZodError | AxiosError}
  * @returns {Promise<WeatherResponse>}
  */
-export const fetchWeatherByCoordinates = async (coord: { lat: number; lon: number }): Promise<WeatherResponse> => {
+export const fetchWeatherByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<WeatherResponse> => {
   const response: AxiosResponse<WeatherResponse> = await base
     .get<WeatherResponse>(
       import.meta.env.VITE_OW_WEATHER,
       {
         schema: weatherResponseSchema,
-        params: coordQuerySchema.parse(coord)
+        params: coordQuerySchema.parse(coords)
       }
     );
   return response.data;

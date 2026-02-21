@@ -6,7 +6,7 @@ import { useForecastByCoordinates } from "../../hooks/forecastQuery";
 import type { GeolocationType } from "../../context/geolocation/GeolocationContext";
 import { useToast } from "../../context/toast/ToastContext";
 
-const ForecastCoords: FC<Exclude<GeolocationType, null>> = (coords) => {
+const ForecastCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (coords) => {
   const { isFetching, data, error } = useForecastByCoordinates(coords);
   const toast = useToast();
   useEffect(() => {
