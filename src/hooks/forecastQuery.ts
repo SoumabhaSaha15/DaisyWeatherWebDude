@@ -11,17 +11,31 @@ import { type ForecastResponse, forecastResponseSchema } from "./../validators/f
  * @returns {Promise<ForecastResponse>}
  */
 export const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => {
-  const response: AxiosResponse<unknown> = await base.get<unknown>(import.meta.env.VITE_OW_FORECAST, { params: placeQuerySchema.parse({ q: placeName }) });
-  return forecastResponseSchema.parse(response.data);
+  const response: AxiosResponse<ForecastResponse> = await base
+    .get<ForecastResponse>(
+      import.meta.env.VITE_OW_FORECAST,
+      {
+        params: placeQuerySchema.parse({ q: placeName }),
+        schema: forecastResponseSchema
+      }
+    );
+  return response.data;
 };
 /**
  * @name fetchWeatherByCoordinates takes coordinates as input and fetches weather data from OpenWeather API
  * @throws {ZodError | AxiosError}
  * @returns {Promise<ForecastResponse>}
  */
-export const fetchForecastByCoordinates = async (coord: { lat: number, lon: number }): Promise<ForecastResponse> => {
-  const response: AxiosResponse<unknown> = await base.get<unknown>(import.meta.env.VITE_OW_FORECAST, { params: coordQuerySchema.parse(coord) });
-  return forecastResponseSchema.parse(response.data);
+export const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => {
+  const response: AxiosResponse<ForecastResponse> = await base
+    .get<ForecastResponse>(
+      import.meta.env.VITE_OW_FORECAST,
+      {
+        params: coordQuerySchema.parse(coords),
+        schema: forecastResponseSchema
+      }
+    );
+  return response.data;
 };
 
 
@@ -36,7 +50,7 @@ export const useForecastByCity = (city: string) => {
   });
 };
 
-export const useForecastByCoordinates = (coords: Exclude<GeolocationType, null>) => {
+export const useForecastByCoordinates = (coords: Exclude<Exclude<GeolocationType, null>, undefined>) => {
   return useQuery({
     queryKey: ['forecast', 'coords', coords.lon, coords.lat],
     queryFn: () => fetchForecastByCoordinates(coords),

@@ -10,7 +10,14 @@ import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators
  * @returns {Promise<WeatherResponse>}
  */
 export const fetchWeatherByPlaceName = async (placeName: string): Promise<WeatherResponse> => {
-  const response: AxiosResponse<unknown> = await base.get<unknown>(import.meta.env.VITE_OW_WEATHER, { params: placeQuerySchema.parse({ q: placeName }) });
+  const response: AxiosResponse<WeatherResponse> = await base
+    .get<WeatherResponse>(
+      import.meta.env.VITE_OW_WEATHER,
+      {
+        schema: weatherResponseSchema,
+        params: placeQuerySchema.parse({ q: placeName })
+      }
+    );
   return weatherResponseSchema.parse(response.data);
 };
 /**
@@ -19,8 +26,15 @@ export const fetchWeatherByPlaceName = async (placeName: string): Promise<Weathe
  * @returns {Promise<WeatherResponse>}
  */
 export const fetchWeatherByCoordinates = async (coord: { lat: number; lon: number }): Promise<WeatherResponse> => {
-  const response: AxiosResponse<unknown> = await base.get<unknown>(import.meta.env.VITE_OW_WEATHER, { params: coordQuerySchema.parse(coord) });
-  return weatherResponseSchema.parse(response.data);
+  const response: AxiosResponse<WeatherResponse> = await base
+    .get<WeatherResponse>(
+      import.meta.env.VITE_OW_WEATHER,
+      {
+        schema: weatherResponseSchema,
+        params: coordQuerySchema.parse(coord)
+      }
+    );
+  return response.data;
 };
 
 
@@ -35,7 +49,7 @@ export const useWeatherByCity = (city: string) => {
   });
 };
 
-export const useWeatherByCoords = (coords: Exclude<GeolocationType, null>) => {
+export const useWeatherByCoords = (coords: Exclude<Exclude<GeolocationType, null>, undefined>) => {
   return useQuery({
     queryKey: ['weather', 'coords', coords.lon, coords.lat],
     queryFn: () => fetchWeatherByCoordinates(coords),

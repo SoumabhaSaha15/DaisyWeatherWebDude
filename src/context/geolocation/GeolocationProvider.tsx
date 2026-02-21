@@ -5,7 +5,7 @@ import { GeolocationContext, type GeolocationType } from "./GeolocationContext";
 
 const GeolocationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const toast = useToast();
-  const [geolocation, setGeolocation] = useState<GeolocationType>(null);
+  const [geolocation, setGeolocation] = useState<GeolocationType>(undefined);
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       ({ coords: { longitude, latitude } }) => {

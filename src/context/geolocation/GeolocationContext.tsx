@@ -1,13 +1,11 @@
 import { createContext, type Context, useContext } from "react";
-export type GeolocationType = { lon: number; lat: number; } | null;
+export type GeolocationType = { lon: number; lat: number; } | null | undefined;
 type GeolocationProp = {
   geolocation: GeolocationType;
-  // setGeolocation: (value: GeolocationType | null | ((prev: GeolocationType | null) => GeolocationType | null)) => void;
 };
 
 export const GeolocationContext: Context<GeolocationProp> = createContext<GeolocationProp>({
-  geolocation: null,
-  // setGeolocation: console.log
+  geolocation: undefined,
 });
 
 const useGeolocation = () => useContext<GeolocationProp>(GeolocationContext);

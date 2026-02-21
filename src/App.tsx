@@ -10,6 +10,7 @@ import { useCachedCities } from "./hooks/cachedCities";
 import ForecastCoords from "./components/forecast/Coords";
 import { useState, useRef, type FC, useMemo } from "react";
 import useGeolocation from "./context/geolocation/GeolocationContext";
+import { ForecastSkeleton, WeatherSkeleton } from "./components/Loader";
 
 const App: FC = () => {
 
@@ -30,20 +31,27 @@ const App: FC = () => {
   useHotkeys('mod+k', handleOpenSearch, { preventDefault: true });
 
   const viewContent = useMemo(() => {
-    if (city === null && geolocation !== null)
-      return (
-        <>
-          <WeatherCoords {...geolocation} />
-          <ForecastCoords {...geolocation} />
-        </>
-      );
-    const targetCity = city ?? "kolkata";
-    return (
+    if (geolocation === undefined) return (
       <>
-        <WeatherCity q={targetCity} />
-        <ForecastCity q={targetCity} />
+        <WeatherSkeleton />
+        <ForecastSkeleton />
       </>
     );
+    else if (city === null && !!geolocation) return (
+      <>
+        <WeatherCoords {...geolocation} />
+        <ForecastCoords {...geolocation} />
+      </>
+    );
+    else {
+      const targetCity = city ?? "kolkata";
+      return (
+        <>
+          <WeatherCity q={targetCity} />
+          <ForecastCity q={targetCity} />
+        </>
+      );
+    }
   }, [city, geolocation]);
 
   return (
@@ -66,7 +74,7 @@ const App: FC = () => {
         <div className="modal-box min-h-80">
           <h3 className="font-bold text-lg flex items-center gap-2 w-full justify-between px-2">
             <span>
-              Search Weather &nbsp; <kbd className="kbd rounded-xl" children="ctrl/⌘+k" />
+              Search Weather &nbsp; <kbd className="kbd rounded-xl">ctrl/⌘+k</kbd>
             </span>
             <button
               className="btn btn-md btn-circle btn-error focus:outline-none! focus:ring-0 focus:ring-accent"
@@ -108,13 +116,13 @@ const App: FC = () => {
               </label>
             </div>
             {cachedCities.length ? (<ul tabIndex={-1} className="dropdown-content menu bg-base-300 rounded-box z-1 w-full p-2 mt-1 shadow-sm">
-              {cachedCities.map((item, index) => (
-                <li key={index} onClick={() => {
-                  setSearch(item);
-                  setCity(item);
-                  closeModal();
-                }}>
-                  <a className="bg-base-100 hover:bg-accent mb-0.5" >{item}</a>
+              {cachedCities.map((item) => (
+                <li key={crypto.randomUUID()} >
+                  <button className="bg-base-100 hover:bg-accent mb-0.5" onClick={() => {
+                    setSearch(item);
+                    setCity(item);
+                    closeModal();
+                  }}>{item}</button>
                 </li>
               ))}
             </ul>) : (<></>)}
