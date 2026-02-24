@@ -5,9 +5,9 @@ import { type GeolocationType } from "../context/geolocation/GeolocationContext"
 import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators/query";
 import { type ForecastResponse, forecastResponseSchema } from "./../validators/forecast";
 
-export const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: placeQuerySchema.parse({ q: placeName }), schema: forecastResponseSchema })).data;
+const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: placeQuerySchema.parse({ q: placeName }), schema: forecastResponseSchema })).data;
 
-export const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: coordQuerySchema.parse(coords), schema: forecastResponseSchema })).data;
+const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: coordQuerySchema.parse(coords), schema: forecastResponseSchema })).data;
 
 export const useForecastByCity = (city: string) => {
   return useQuery({

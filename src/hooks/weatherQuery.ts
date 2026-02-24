@@ -4,9 +4,9 @@ import { type GeolocationType } from "../context/geolocation/GeolocationContext"
 import { type WeatherResponse, weatherResponseSchema } from "./../validators/weather";
 import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators/query";
 
-export const fetchWeatherByPlaceName = async (placeName: string): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: placeQuerySchema.parse({ q: placeName }) })).data;
+const fetchWeatherByPlaceName = async (placeName: string): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: placeQuerySchema.parse({ q: placeName }) })).data;
 
-export const fetchWeatherByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: coordQuerySchema.parse(coords) })).data;
+const fetchWeatherByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: coordQuerySchema.parse(coords) })).data;
 
 
 export const useWeatherByCity = (city: string) => {
