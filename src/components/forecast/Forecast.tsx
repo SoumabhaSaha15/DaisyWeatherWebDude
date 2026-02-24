@@ -41,7 +41,7 @@ const Forecast: FC<ForecastResponse> = (forecast) => {
 
             return (
               <div
-                key={index}
+                key={crypto.randomUUID()}
                 className="flex items-center justify-between p-3 rounded-xl hover:bg-base-content/5 transition-colors group cursor-default"
               >
                 {/* Day & Date */}

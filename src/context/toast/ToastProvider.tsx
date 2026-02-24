@@ -30,15 +30,19 @@ export default function ToastProvider({ children }: { children: ReactNode; }) {
       {children}
       <div
         className={"toast" + ((toastOptions.toastPosition[0] == "") ? "" : (" " + toastOptions.toastPosition.join(" ")))}
-        children={toasts.map(({ id, component }) => (
+      // children=
+      >
+        {toasts.map(({ id, component }) => (
           <div
             id={id}
             key={id}
-            children={component}
+            // children=
             className={`rounded-full alert ${toastOptions.toastVariant}`}
-          />
+          >
+            {component}
+          </div>
         ))}
-      />
+      </div>
     </ToastContext.Provider>
   );
 }
