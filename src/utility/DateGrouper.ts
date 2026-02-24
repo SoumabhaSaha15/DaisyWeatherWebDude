@@ -1,7 +1,7 @@
 import { forecastResponseSchema } from "../validators/forecast";
 import { z } from "zod";
 
-export type ForecastWeather = z.infer<typeof forecastResponseSchema['shape']['list']['element']>;;
+type ForecastWeather = z.infer<typeof forecastResponseSchema['shape']['list']['element']>;;
 type DateGroupped = {
   dailyDate: string;
   data: ForecastWeather[];
