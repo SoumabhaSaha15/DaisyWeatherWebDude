@@ -40,7 +40,7 @@ export const WeatherSkeleton: FC = () => {
             <div className="skeleton h-4 w-24 rounded-full opacity-50"></div>
             <div className="flex justify-between items-end">
               <div className="flex gap-1 h-12 items-end">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map(i => <div key={i} className="skeleton w-2 h-full rounded-full opacity-30"></div>)}
+                {[1, 2, 3, 4, 5, 6, 7, 8].map(_ => <div key={crypto.randomUUID()} className="skeleton w-2 h-full rounded-full opacity-30"></div>)}
               </div>
               <div className="flex flex-col items-end gap-1">
                 <div className="skeleton h-8 w-16 rounded-lg opacity-50"></div>

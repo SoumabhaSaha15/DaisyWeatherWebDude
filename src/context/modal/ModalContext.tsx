@@ -1,6 +1,6 @@
 import React, { createContext, useContext, type Context, type ReactNode } from "react";
 
-export type ModalContextType = {
+type ModalContextType = {
   modalRef: React.RefObject<HTMLDialogElement | null>;
   openModal: () => void;
   closeModal: () => void;

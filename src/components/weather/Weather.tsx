@@ -7,26 +7,26 @@ import {
   WiSunset
 } from "react-icons/wi";
 
+
+// Helper for Bars (Pressure/Visibility)
+const RenderBars: FC<{ value: number; max: number; colorClass: string }> = ({ value, max, colorClass }) => {
+  const percentage = Math.min((value / max) * 100, 100);
+  const totalBars = 8;
+  const filledBars = Math.ceil((percentage / 100) * totalBars);
+
+  return (
+    <div className="flex flex-col gap-1.5 h-full justify-end">
+      {Array.from({ length: totalBars }).map((_, i) => (
+        <div
+          key={crypto.randomUUID()}
+          className={`w-8 sm:w-10 h-1.5 rounded-full transition-colors duration-500 ${(totalBars - 1 - i) < filledBars ? colorClass : "bg-base-content/10"}`}
+        />
+      ))}
+    </div>
+  );
+};
+
 const Weather: FC<WeatherResponse> = (weather) => {
-
-  // Helper for Bars (Pressure/Visibility)
-  const renderBars = (value: number, max: number, colorClass: string) => {
-    const percentage = Math.min((value / max) * 100, 100);
-    const totalBars = 8;
-    const filledBars = Math.ceil((percentage / 100) * totalBars);
-
-    return (
-      <div className="flex flex-col gap-1.5 h-full justify-end">
-        {Array.from({ length: totalBars }).map((_, i) => (
-          <div
-            key={i}
-            className={`w-8 sm:w-10 h-1.5 rounded-full transition-colors duration-500 ${(totalBars - 1 - i) < filledBars ? colorClass : "bg-base-content/10"}`}
-          />
-        ))}
-      </div>
-    );
-  };
-
   // Sun Cycle Calc
   const currentTime = Date.now() / 1000;
   const sunProgress = Math.max(0, Math.min(1,
@@ -75,7 +75,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
             <svg viewBox="0 0 100 100" className="w-full h-full">
               {Array.from({ length: 40 }).map((_, i) => (
                 <line
-                  key={i}
+                  key={crypto.randomUUID()}
                   x1="50" y1="10" x2="50" y2="15"
                   transform={`rotate(${i * 9} 50 50)`}
                   className={i % 10 === 0 ? "stroke-base-content" : "stroke-base-content/20"}
@@ -110,7 +110,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
             <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Visibility</h2>
           </div>
           <div className="flex justify-between items-end flex-1">
-            {renderBars(weather.visibility, 10000, "bg-info")}
+            <RenderBars value={weather.visibility} max={10000} colorClass="bg-info" />
             <div className="text-right pb-2">
               <div className="text-4xl font-bold tracking-tighter">{Math.round(weather.visibility / 1000)}</div>
               <div className="text-xs opacity-60 font-bold">KM</div>
@@ -122,7 +122,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
             <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Pressure</h2>
           </div>
           <div className="flex justify-between items-end flex-1">
-            {renderBars(weather.main.pressure, 1050, "bg-warning")}
+            <RenderBars value={weather.main.pressure} max={1050} colorClass="bg-warning" />
             <div className="text-right pb-2">
               <div className="text-4xl font-bold tracking-tighter">{weather.main.pressure}</div>
               <div className="text-xs opacity-60 font-bold">hPa</div>

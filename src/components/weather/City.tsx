@@ -8,11 +8,11 @@ import { useToast } from "../../context/toast/ToastContext";
 import { useWeatherByCity } from "../../hooks/weatherQuery";
 
 const WeatherCity: FC<z.infer<typeof placeSchema>> = ({ q }) => {
-  const { isLoading, data, error } = useWeatherByCity(q);
+  const { isLoading, data, isError, error } = useWeatherByCity(q);
   const toast = useToast();
   useEffect(() => {
-    if (error) toast.open(error.message);
-  }, [error]);
+    if (isError) toast.open(error.message);
+  }, [isError, error]);
   return (
     <>
       {isLoading ? (<WeatherSkeleton />) : ((data) ? (<Weather {...data} />) : (<WeatherNotFound />))}
