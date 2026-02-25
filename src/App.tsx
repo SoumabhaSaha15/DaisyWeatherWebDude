@@ -100,6 +100,7 @@ const App: FC = () => {
                   id="NameInput"
                   value={search}
                   ref={inputRef}
+                  className="font-bold"
                   onChange={({ currentTarget: { value } }) => setSearch(value)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
@@ -118,7 +119,7 @@ const App: FC = () => {
             {cachedCities.length ? (<ul tabIndex={-1} className="dropdown-content menu bg-base-300 rounded-box z-1 w-full p-2 mt-1 shadow-sm">
               {cachedCities.map((item) => (
                 <li key={crypto.randomUUID()} >
-                  <button className="bg-base-100 hover:bg-accent mb-0.5" onClick={() => {
+                  <button className="bg-base-100 hover:bg-accent mb-0.5 font-bold tracking-tighter" onClick={() => {
                     setSearch(item);
                     setCity(item);
                     closeModal();

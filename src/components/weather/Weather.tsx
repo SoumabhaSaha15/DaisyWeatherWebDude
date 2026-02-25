@@ -62,7 +62,65 @@ const Weather: FC<WeatherResponse> = (weather) => {
         </div>
       </div>
 
-      {/* 2. WIND GAUGE */}
+      {/* 2. TEMPERATURE */}
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
+        <div className="card-body justify-between p-6">
+          <div className="flex justify-between items-start">
+            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Temperature</h2>
+            <div className="badge badge-soft hover:badge-outline badge-md font-mono opacity-70">{weather.weather[0].main}</div>
+          </div>
+          <div className="flex justify-between items-end mt-4">
+            <div>
+              <span className="text-6xl font-medium tracking-tighter">{Math.round(weather.main.temp)}°</span>
+            </div>
+            <div className="text-right space-y-1">
+              <div className="text-xs">
+                <span className="opacity-60">Feels </span>
+                <span className="font-bold">{Math.round(weather.main.feels_like)}°</span>
+              </div>
+              <div className="text-xs">
+                <span className="opacity-60">High </span>
+                <span className="font-bold text-error">{Math.round(weather.main.temp_max)}°</span>
+              </div>
+              <div className="text-xs">
+                <span className="opacity-60">Low </span>
+                <span className="font-bold text-info">{Math.round(weather.main.temp_min)}°</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. VISIBILITY & PRESSURE */}
+      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 scale-95 hover:scale-100 animate-wiggle">
+        <div className="card-body p-5">
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Visibility</h2>
+          </div>
+          <div className="flex justify-between items-end flex-1">
+            <RenderBars value={weather.visibility} max={10000} colorClass="bg-info" />
+            <div className="text-right pb-2">
+              <div className="text-4xl font-bold tracking-tighter">{Math.round(weather.visibility / 1000)}</div>
+              <div className="text-xs opacity-60 font-bold">KM</div>
+              <div className="text-[12px] opacity-40 mt-1">Max 10km</div>
+            </div>
+          </div>
+          <div className="divider divider-accent"></div>
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Pressure</h2>
+          </div>
+          <div className="flex justify-between items-end flex-1">
+            <RenderBars value={weather.main.pressure} max={1050} colorClass="bg-warning" />
+            <div className="text-right pb-2">
+              <div className="text-4xl font-bold tracking-tighter">{weather.main.pressure}</div>
+              <div className="text-xs opacity-60 font-bold">hPa</div>
+              <div className="text-[12px] opacity-40 mt-1">Normal 1013</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. WIND GAUGE */}
       <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
         <div className="card-body items-center relative p-4">
           <div className="w-full flex justify-between items-center mb-1">
@@ -99,64 +157,6 @@ const Weather: FC<WeatherResponse> = (weather) => {
           <div className="flex justify-between w-full text-[12px] opacity-50 px-2">
             <span>Gust: {weather.wind.gust ?? 0}</span>
             <span>{weather.wind.deg}°</span>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. VISIBILITY & PRESSURE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 md:row-span-2 scale-95 hover:scale-100 animate-wiggle">
-        <div className="card-body p-5">
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Visibility</h2>
-          </div>
-          <div className="flex justify-between items-end flex-1">
-            <RenderBars value={weather.visibility} max={10000} colorClass="bg-info" />
-            <div className="text-right pb-2">
-              <div className="text-4xl font-bold tracking-tighter">{Math.round(weather.visibility / 1000)}</div>
-              <div className="text-xs opacity-60 font-bold">KM</div>
-              <div className="text-[12px] opacity-40 mt-1">Max 10km</div>
-            </div>
-          </div>
-          <div className="divider divider-accent"></div>
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Pressure</h2>
-          </div>
-          <div className="flex justify-between items-end flex-1">
-            <RenderBars value={weather.main.pressure} max={1050} colorClass="bg-warning" />
-            <div className="text-right pb-2">
-              <div className="text-4xl font-bold tracking-tighter">{weather.main.pressure}</div>
-              <div className="text-xs opacity-60 font-bold">hPa</div>
-              <div className="text-[12px] opacity-40 mt-1">Normal 1013</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 4. TEMPERATURE */}
-      <div className="card bg-base-200/50 backdrop-blur-md shadow-sm border border-base-content/5 col-span-1 scale-95 hover:scale-100 animate-wiggle">
-        <div className="card-body justify-between p-6">
-          <div className="flex justify-between items-start">
-            <h2 className="text-xs font-bold opacity-60 uppercase tracking-widest">Temperature</h2>
-            <div className="badge badge-soft hover:badge-outline badge-md font-mono opacity-70">{weather.weather[0].main}</div>
-          </div>
-          <div className="flex justify-between items-end mt-4">
-            <div>
-              <span className="text-6xl font-thin tracking-tighter">{Math.round(weather.main.temp)}°</span>
-            </div>
-            <div className="text-right space-y-1">
-              <div className="text-xs">
-                <span className="opacity-60">Feels </span>
-                <span className="font-bold">{Math.round(weather.main.feels_like)}°</span>
-              </div>
-              <div className="text-xs">
-                <span className="opacity-60">High </span>
-                <span className="font-bold text-error">{Math.round(weather.main.temp_max)}°</span>
-              </div>
-              <div className="text-xs">
-                <span className="opacity-60">Low </span>
-                <span className="font-bold text-info">{Math.round(weather.main.temp_min)}°</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

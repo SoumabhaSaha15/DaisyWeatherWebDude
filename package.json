@@ -12,7 +12,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "icons": "pwa-assets-generator --preset minimal-2023 public/vite.svg"
+    "icons": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
