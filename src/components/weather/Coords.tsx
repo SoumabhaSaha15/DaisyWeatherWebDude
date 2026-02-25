@@ -1,5 +1,5 @@
+import { type FC } from "react";
 import Weather from "./Weather";
-import { useEffect, type FC } from "react";
 import { WeatherSkeleton } from "../Loader";
 import { WeatherNotFound } from "../NotFound";
 import { useToast } from "../../context/toast/ToastContext";
@@ -7,12 +7,8 @@ import { useWeatherByCoords } from "../../hooks/weatherQuery";
 import type { GeolocationType } from "../../context/geolocation/GeolocationContext";
 
 const WeatherCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (coords) => {
-  const { isLoading, data, error } = useWeatherByCoords(coords);
   const toast = useToast();
-  useEffect(() => {
-    if (error) toast.open(error.message);
-  }, [error]);
-
+  const { isLoading, data } = useWeatherByCoords(coords, (error) => toast.open(error.message));
   return (
     <>
       {isLoading ? (<WeatherSkeleton />) : ((data) ? (<Weather {...data} />) : (<WeatherNotFound />))}

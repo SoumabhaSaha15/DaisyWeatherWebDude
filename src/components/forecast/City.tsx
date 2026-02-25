@@ -1,6 +1,6 @@
 import { z } from "zod"
+import { type FC } from "react";
 import Forcast from "./Forecast";
-import { useEffect, type FC } from "react";
 import { ForecastSkeleton } from "../Loader";
 import { ForecastNotFound } from "../NotFound";
 import { placeSchema } from "../../validators/query";
@@ -8,12 +8,8 @@ import { useToast } from "../../context/toast/ToastContext";
 import { useForecastByCity } from "../../hooks/forecastQuery";
 
 const ForecastCity: FC<z.infer<typeof placeSchema>> = ({ q }) => {
-  const { isLoading, data, error } = useForecastByCity(q);
   const toast = useToast();
-
-  useEffect(() => {
-    if (error) toast.open(error.message);
-  }, [error]);
+  const { isLoading, data } = useForecastByCity(q, (error) => toast.open(error.message));
   return (
     <>
       {isLoading ? (<ForecastSkeleton />) : ((data) ? (<Forcast {...data} />) : (<ForecastNotFound />))}
