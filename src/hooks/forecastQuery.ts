@@ -10,7 +10,7 @@ const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResp
 
 const fetchForecastByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: coordQuerySchema.parse(coords), schema: forecastResponseSchema })).data;
 
-export const useForecastByCity = (city: string, onError: (error: Error) => void = console.error) => {
+export const useForecastByCity = (city: string) => {
   return useQuery({
     queryKey: ['forecast', 'city', city.toLowerCase()],
     queryFn: () => fetchForecastByPlaceName(city),
@@ -18,14 +18,10 @@ export const useForecastByCity = (city: string, onError: (error: Error) => void 
     staleTime: 1000 * 60 * 10,   // Data is fresh for 10 minutes
     gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (offline support)
     retry: 1,                    // Retry once if API fails
-    throwOnError: (error) => {
-      onError(error);
-      return false;
-    },           // Throw error to be caught by react-query's error handling
   });
 };
 
-export const useForecastByCoordinates = (coords: Exclude<Exclude<GeolocationType, null>, undefined>, onError: (error: Error) => void = console.error) => {
+export const useForecastByCoordinates = (coords: Exclude<Exclude<GeolocationType, null>, undefined>) => {
   return useQuery({
     queryKey: ['forecast', 'coords', coords.lon, coords.lat],
     queryFn: () => fetchForecastByCoordinates(coords),
@@ -33,9 +29,5 @@ export const useForecastByCoordinates = (coords: Exclude<Exclude<GeolocationType
     staleTime: 1000 * 60 * 10,   // Data is fresh for 10 minutes
     gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (offline support)
     retry: 1,                    // Retry once if API fails
-    throwOnError: (error) => {
-      onError(error);
-      return false;
-    }
   });
 };

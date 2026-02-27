@@ -9,7 +9,7 @@ const fetchWeatherByPlaceName = async (placeName: string): Promise<WeatherRespon
 const fetchWeatherByCoordinates = async (coords: Exclude<Exclude<GeolocationType, null>, undefined>): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: coordQuerySchema.parse(coords) })).data;
 
 
-export const useWeatherByCity = (city: string, onError: (error: Error) => void = console.error) => {
+export const useWeatherByCity = (city: string) => {
   return useQuery({
     queryKey: ['weather', 'city', city.toLowerCase()],
     queryFn: () => fetchWeatherByPlaceName(city),
@@ -17,14 +17,10 @@ export const useWeatherByCity = (city: string, onError: (error: Error) => void =
     staleTime: 1000 * 60 * 10,   // Data is fresh for 10 minutes
     gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (offline support)
     retry: 1,                    // Retry once if API fails
-    throwOnError: (error) => {
-      onError(error);
-      return false;
-    }
   });
 };
 
-export const useWeatherByCoords = (coords: Exclude<Exclude<GeolocationType, null>, undefined>, onError: (error: Error) => void = console.error) => {
+export const useWeatherByCoords = (coords: Exclude<Exclude<GeolocationType, null>, undefined>) => {
   return useQuery({
     queryKey: ['weather', 'coords', coords.lon, coords.lat],
     queryFn: () => fetchWeatherByCoordinates(coords),
@@ -32,9 +28,5 @@ export const useWeatherByCoords = (coords: Exclude<Exclude<GeolocationType, null
     staleTime: 1000 * 60 * 10,   // Data is fresh for 10 minutes
     gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (offline support)
     retry: 1,                    // Retry once if API fails
-    throwOnError: (error) => {
-      onError(error);
-      return false;
-    }
   });
 };
