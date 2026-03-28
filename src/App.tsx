@@ -20,8 +20,8 @@ const App: FC = () => {
   const [search, setSearch] = useState<string>('');
   const [city, setCity] = useState<string | null>(null);
   const { openModal, modalRef, closeModal } = useModal();
-  const [rippleClose, eventClose] = useRipple<HTMLButtonElement>();
-  const [rippleSearch, eventSearch] = useRipple<HTMLButtonElement>();
+  const [rippleClose, eventClose] = useRipple<HTMLButtonElement>({ color: "currentColor" });
+  const [rippleSearch, eventSearch] = useRipple<HTMLButtonElement>({ color: "currentColor" });
 
   const handleOpenSearch = () => {
     openModal();
