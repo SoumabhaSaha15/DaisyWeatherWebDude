@@ -1,4 +1,4 @@
-import useRipple from "use-ripple-hook";
+import { useRipple } from "use-ripple-hook";
 import { IoMdClose } from "react-icons/io";
 import { useHotkeys } from "react-hotkeys-hook";
 import { FaSearchLocation } from "react-icons/fa";

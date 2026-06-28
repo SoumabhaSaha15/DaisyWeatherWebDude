@@ -151,7 +151,7 @@ const Weather: FC<WeatherResponse> = (weather) => {
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center pt-4">
               <span className="text-2xl font-bold text-shadow-2xl">{Math.round(weather.wind.speed)}</span>
-              <span className="text-[12px] opacity-60">KMPH</span>
+              <span className="text-[12px] opacity-90 text-shadow-accent">KMPH</span>
             </div>
           </div>
           <div className="flex justify-between w-full text-[12px] opacity-50 px-2">
