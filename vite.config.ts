@@ -64,6 +64,7 @@ export default defineConfig(({ mode }) => {
       })
     ],
     server: {
+      port: 4000,
       proxy: {
         "/api": {
           target: targetUrl,
