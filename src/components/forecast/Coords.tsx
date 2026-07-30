@@ -10,7 +10,7 @@ const ForecastCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (
   const { isFetching, data, error, isError } = useForecastByCoordinates(coords);
   const toast = useToast();
   useEffect(() => {
-    if (error) toast.open(error.message);
+    if (error) toast.open(error.message, "alert-error");
   }, [isError]);
   return (
     <>

@@ -10,7 +10,7 @@ const WeatherCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (c
   const { isLoading, data, error, isError } = useWeatherByCoords(coords);
   const toast = useToast();
   useEffect(() => {
-    if (isError) toast.open(error.message);
+    if (isError) toast.open(error.message, "alert-error");
   }, [isError]);
   return (
     <>

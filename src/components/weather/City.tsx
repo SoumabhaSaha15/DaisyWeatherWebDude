@@ -11,7 +11,7 @@ const WeatherCity: FC<z.infer<typeof placeSchema>> = ({ q }) => {
   const { isLoading, data, isError, error } = useWeatherByCity(q);
   const toast = useToast();
   useEffect(() => {
-    if (isError) toast.open(error.message);
+    if (isError) toast.open(error.message, "alert-error");
   }, [isError]);
   return (
     <>

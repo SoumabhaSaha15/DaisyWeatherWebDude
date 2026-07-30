@@ -1,8 +1,8 @@
 import { useRipple } from "use-ripple-hook";
 import { IoMdClose } from "react-icons/io";
-import { useHotkeys } from "react-hotkeys-hook";
 import { FaSearchLocation } from "react-icons/fa";
 import WeatherCity from "./components/weather/City";
+import { useHotkey } from "@tanstack/react-hotkeys";
 import ForecastCity from "./components/forecast/City";
 import WeatherCoords from "./components/weather/Coords";
 import { useModal } from "./context/modal/ModalContext";
@@ -28,7 +28,7 @@ const App: FC = () => {
     setTimeout(() => inputRef.current?.focus(), 0);
   };
 
-  useHotkeys('mod+k', handleOpenSearch, { preventDefault: true });
+  useHotkey("Mod+K", handleOpenSearch, { preventDefault: true });
 
   const viewContent = useMemo(() => {
     if (geolocation === undefined) return (

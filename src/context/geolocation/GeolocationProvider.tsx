@@ -1,5 +1,5 @@
+import { useToast } from "../toast/ToastContext";
 import { coordSchema } from "../../validators/query";
-import { DefaultOptions, useToast } from "../toast/ToastContext";
 import { useEffect, useState, type FC, type ReactNode } from "react";
 import { GeolocationContext, type GeolocationType } from "./GeolocationContext";
 
@@ -19,7 +19,7 @@ const GeolocationProvider: FC<{ children: ReactNode }> = ({ children }) => {
         });
       },
       (err: GeolocationPositionError) => {
-        toast.open(err.message, true, 2000, DefaultOptions.error);
+        toast.open(err.message, "alert-error");
         setGeolocation(null);
       }, { enableHighAccuracy: true }
     );
