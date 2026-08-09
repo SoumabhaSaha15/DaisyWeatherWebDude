@@ -35,9 +35,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           },
           {
             name: "hotkey",
-            render: <HotkeysDevtoolsPanel />,
-          },
-
+            render: <HotkeysDevtoolsPanel theme="dark" devtoolsOpen={false} />,
+          }
         ]}
       />
       <ErrorBoundary FallbackComponent={({ error }) => (<ErrorComponent error={error} />)}>
