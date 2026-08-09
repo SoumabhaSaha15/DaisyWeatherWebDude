@@ -1,7 +1,7 @@
-import { useToast } from "../toast/ToastContext";
-import { coordSchema } from "../../validators/query";
+import { coordSchema } from "@/validators/query";
+import { useToast } from "@/context/toast/ToastContext";
 import { useEffect, useState, type FC, type ReactNode } from "react";
-import { GeolocationContext, type GeolocationType } from "./GeolocationContext";
+import { GeolocationContext, type GeolocationType } from "@/context/geolocation/GeolocationContext";
 
 const GeolocationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const toast = useToast();

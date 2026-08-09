@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { type WeatherResponse } from "../../validators/weather";
+import { type WeatherResponse } from "@/validators/weather";
 import {
   WiStrongWind,
   WiHumidity,

@@ -1,6 +1,6 @@
-import ToastProvider from "./toast/ToastProvider";
-import ThemeProvider from "./theme/ThemeProvider";
-import ModalProvider from "./modal/ModalProvider";
+import ToastProvider from "@/context/toast/ToastProvider";
+import ThemeProvider from "@/context/theme/ThemeProvider";
+import ModalProvider from "@/context/modal/ModalProvider";
 import type { ReactNode } from "react";
 
 export default ({ children }: { children: ReactNode }) => {

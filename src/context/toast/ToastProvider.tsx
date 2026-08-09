@@ -1,4 +1,4 @@
-import { cn } from "./../../utility/cn";
+import { cn } from "@/utility/cn";
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import {
   ToastContext,
@@ -6,7 +6,7 @@ import {
   type ToastOptionsType,
   type ToastVariantType,
   type ToastPositionTuple,
-} from "./ToastContext";
+} from "@/context/toast/ToastContext";
 
 interface Toast {
   id: string;

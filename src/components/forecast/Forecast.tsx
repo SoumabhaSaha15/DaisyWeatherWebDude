@@ -1,6 +1,6 @@
 import { type FC } from "react";
-import { type ForecastResponse } from "../../validators/forecast";
-import { DateGrouper } from "../../utility/DateGrouper";
+import { DateGrouper } from "@/utility/DateGrouper";
+import { type ForecastResponse } from "@/validators/forecast";
 import { WiRain, WiDaySunny, WiCloudy, WiSnow, WiThunderstorm } from "react-icons/wi";
 
 const Forecast: FC<ForecastResponse> = (forecast) => {

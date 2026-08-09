@@ -1,8 +1,8 @@
-import base from "../utility/AxiosBase";
+import base from "@/utility/base";
 import { useQuery } from '@tanstack/react-query';
-import { type GeolocationType } from "../context/geolocation/GeolocationContext";
-import { type WeatherResponse, weatherResponseSchema } from "./../validators/weather";
-import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators/query";
+import { type GeolocationType } from "@/context/geolocation/GeolocationContext";
+import { type WeatherResponse, weatherResponseSchema } from "@/validators/weather";
+import { placeQuerySchema, coordQuerySchema, coordSchema } from "@/validators/query";
 
 const fetchWeatherByPlaceName = async (placeName: string): Promise<WeatherResponse> => (await base.get<WeatherResponse>(import.meta.env.VITE_OW_WEATHER, { schema: weatherResponseSchema, params: placeQuerySchema.parse({ q: placeName }) })).data;
 

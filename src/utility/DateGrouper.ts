@@ -1,5 +1,5 @@
-import { forecastResponseSchema } from "../validators/forecast";
 import { z } from "zod";
+import { forecastResponseSchema } from "@/validators/forecast";
 
 type ForecastWeather = z.infer<typeof forecastResponseSchema['shape']['list']['element']>;;
 type DateGroupped = {

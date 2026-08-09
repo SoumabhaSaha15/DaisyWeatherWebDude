@@ -1,5 +1,6 @@
 import { type FC, useRef, useCallback, useMemo } from "react";
-import { type ModalProviderProps, ModalContext } from "./ModalContext";
+import { type ModalProviderProps, ModalContext } from "@/context/modal/ModalContext";
+
 const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
 
   const modalRef = useRef<HTMLDialogElement>(null);

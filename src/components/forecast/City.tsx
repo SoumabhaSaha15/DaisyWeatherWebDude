@@ -1,11 +1,11 @@
 import { z } from "zod"
-import Forcast from "./Forecast";
 import { type FC, useEffect } from "react";
-import { ForecastSkeleton } from "../Loader";
-import { ForecastNotFound } from "../NotFound";
-import { placeSchema } from "../../validators/query";
-import { useToast } from "../../context/toast/ToastContext";
-import { useForecastByCity } from "../../hooks/forecastQuery";
+import { placeSchema } from "@/validators/query";
+import Forcast from "@/components/forecast/Forecast";
+import { ForecastSkeleton } from "@/components/Loader";
+import { useToast } from "@/context/toast/ToastContext";
+import { ForecastNotFound } from "@/components/NotFound";
+import { useForecastByCity } from "@/hooks/forecastQuery";
 
 const ForecastCity: FC<z.infer<typeof placeSchema>> = ({ q }) => {
   const { isLoading, data, error, isError } = useForecastByCity(q);

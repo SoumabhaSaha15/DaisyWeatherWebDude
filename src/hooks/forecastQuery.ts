@@ -1,9 +1,9 @@
 
-import base from "../utility/AxiosBase";
+import base from "@/utility/base";
 import { useQuery } from "@tanstack/react-query";
-import { type GeolocationType } from "../context/geolocation/GeolocationContext";
-import { placeQuerySchema, coordQuerySchema, coordSchema } from "./../validators/query";
-import { type ForecastResponse, forecastResponseSchema } from "./../validators/forecast";
+import { type GeolocationType } from "@/context/geolocation/GeolocationContext";
+import { placeQuerySchema, coordQuerySchema, coordSchema } from "@/validators/query";
+import { type ForecastResponse, forecastResponseSchema } from "@/validators/forecast";
 // import { error } from "node:console";
 
 const fetchForecastByPlaceName = async (placeName: string): Promise<ForecastResponse> => (await base.get<ForecastResponse>(import.meta.env.VITE_OW_FORECAST, { params: placeQuerySchema.parse({ q: placeName }), schema: forecastResponseSchema })).data;

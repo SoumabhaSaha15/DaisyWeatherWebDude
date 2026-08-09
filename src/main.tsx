@@ -1,14 +1,16 @@
-import './index.css';
-import './theme.css'
-import App from './App';
+import '@/index.css';
+import '@/theme.css';
+import App from '@/App';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client'
-import DaisyProvider from './context/DaisyProvider';
+import DaisyProvider from '@/context/DaisyProvider';
 import { QueryClient } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorComponent from './components/ErrorComponent';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import GeolocationProvider from './context/geolocation/GeolocationProvider';
+import ErrorComponent from '@/components/ErrorComponent';
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import { HotkeysDevtoolsPanel } from "@tanstack/react-hotkeys-devtools";
+import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
+import GeolocationProvider from '@/context/geolocation/GeolocationProvider';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 
@@ -25,7 +27,19 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
-      <ReactQueryDevtools initialIsOpen={false} buttonPosition='bottom-left' />
+      <TanStackDevtools
+        plugins={[
+          {
+            name: "query",
+            render: <ReactQueryDevtoolsPanel />,
+          },
+          {
+            name: "hotkey",
+            render: <HotkeysDevtoolsPanel />,
+          },
+
+        ]}
+      />
       <ErrorBoundary FallbackComponent={({ error }) => (<ErrorComponent error={error} />)}>
         <DaisyProvider>
           <GeolocationProvider>

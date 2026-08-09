@@ -1,10 +1,10 @@
-import Forcast from "./Forecast";
 import { type FC, useEffect } from "react";
-import { ForecastSkeleton } from "../Loader";
-import { ForecastNotFound } from "../NotFound";
-import { useToast } from "../../context/toast/ToastContext";
-import { useForecastByCoordinates } from "../../hooks/forecastQuery";
-import type { GeolocationType } from "../../context/geolocation/GeolocationContext";
+import Forcast from "@/components/forecast/Forecast";
+import { ForecastSkeleton } from "@/components/Loader";
+import { useToast } from "@/context/toast/ToastContext";
+import { ForecastNotFound } from "@/components/NotFound";
+import { useForecastByCoordinates } from "@/hooks/forecastQuery";
+import type { GeolocationType } from "@/context/geolocation/GeolocationContext";
 
 const ForecastCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (coords) => {
   const { isFetching, data, error, isError } = useForecastByCoordinates(coords);

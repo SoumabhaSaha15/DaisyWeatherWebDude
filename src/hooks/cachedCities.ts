@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { type WeatherResponse } from '../validators/weather';
+import { type WeatherResponse } from '@/validators/weather';
 
 export const useCachedCities = (max = 5) => {
   const queryClient = useQueryClient();

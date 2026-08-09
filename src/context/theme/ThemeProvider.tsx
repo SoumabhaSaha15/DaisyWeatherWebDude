@@ -1,5 +1,5 @@
 import { type ReactNode, useState, useEffect, useCallback } from "react";
-import { ThemeContext, type ThemeOptionsType } from "./ThemeContext";
+import { ThemeContext, type ThemeOptionsType } from "@/context/theme/ThemeContext";
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   const getThemeByTime = useCallback((): ThemeOptionsType => {
