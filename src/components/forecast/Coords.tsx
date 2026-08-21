@@ -1,4 +1,5 @@
 import { type FC, useEffect } from "react";
+import { ZodError, prettifyError } from "zod";
 import Forcast from "@/components/forecast/Forecast";
 import { ForecastSkeleton } from "@/components/Loader";
 import { useToast } from "@/context/toast/ToastContext";
@@ -8,9 +9,13 @@ import type { GeolocationType } from "@/context/geolocation/GeolocationContext";
 
 const ForecastCoords: FC<Exclude<Exclude<GeolocationType, null>, undefined>> = (coords) => {
   const { isFetching, data, error, isError } = useForecastByCoordinates(coords);
-  const toast = useToast();
+  const toast = useToast({ horizontal: "toast-center", vertical: "toast-bottom" });
   useEffect(() => {
-    if (error) toast.open(error.message, "alert-error");
+    if (error) {
+      const msg = (error instanceof ZodError) ? (prettifyError(error)) : (error.message);
+      // console.error(error);
+      toast.open(msg, "alert-error");
+    }
   }, [isError]);
   return (
     <>

@@ -59,6 +59,6 @@ export const forecastResponseSchema = z.object({
     sunrise: z.number(),
     sunset: z.number(),
   }),
-}).strict();
+});
 
 export type ForecastResponse = z.infer<typeof forecastResponseSchema>;

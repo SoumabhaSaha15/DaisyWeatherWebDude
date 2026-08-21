@@ -1,5 +1,5 @@
-import z, { type ZodType } from "zod";
-import axios, { AxiosError, type AxiosResponse } from "axios";
+import { type ZodType } from "zod";
+import axios, { type AxiosResponse } from "axios";
 
 const base = axios.create({ baseURL: "/api" });
 
@@ -16,26 +16,12 @@ base.interceptors.response.use(
         const validated = schema.parse(response.data);
         response.data = validated;
       } catch (error) {
-        if (error instanceof z.ZodError) {
-          const prettyError = z.prettifyError(error);
-          return Promise.reject({
-            ...error,
-            response,
-            message: prettyError,
-            isValidationError: true,
-          });
-        }
-        throw error;
+        console.log(response.data);
+        return Promise.reject(error);
       }
     }
     return response;
   },
-  (error: AxiosError) => {
-    const status = error.response?.status;
-    if (status === 401 || status === 403)
-      console.warn("Session expired. Redirecting to login.");
-
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 export default base; 

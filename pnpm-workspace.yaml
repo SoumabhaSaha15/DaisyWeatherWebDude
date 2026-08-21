@@ -11,7 +11,7 @@ minimumReleaseAgeExclude:
   - '@tanstack/react-query-devtools@5.101.2'
   - '@tanstack/react-query-persist-client@5.101.2'
   - '@tanstack/react-query@5.101.2'
-  - daisyui@5.6.10 || 5.6.16 || 5.7.8
+  - daisyui@5.6.10 || 5.6.16 || 5.7.8 || 5.7.17 || 5.7.19 || 5.7.20
   - '@types/node@26.1.1'
   - '@typescript/typescript-aix-ppc64@7.0.2'
   - '@typescript/typescript-darwin-arm64@7.0.2'
@@ -52,6 +52,11 @@ minimumReleaseAgeExclude:
   - tailwindcss@4.3.3
   - vite@8.1.5 || 8.2.0 || 8.2.1
   - '@vitejs/plugin-react-swc@4.3.3'
+  - '@tanstack/devtools-event-bus@0.4.3'
+  - '@tanstack/devtools-ui@0.7.1'
+  - '@tanstack/devtools@0.14.1'
+  - '@tanstack/react-devtools@0.10.11'
+  - eslint@10.9.0
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild

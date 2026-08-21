@@ -1,16 +1,16 @@
 import { useRipple } from "use-ripple-hook";
 import { IoMdClose } from "react-icons/io";
 import { FaSearchLocation } from "react-icons/fa";
-import WeatherCity from "./components/weather/City";
+import WeatherCity from "@/components/weather/City";
 import { useHotkey } from "@tanstack/react-hotkeys";
-import ForecastCity from "./components/forecast/City";
-import WeatherCoords from "./components/weather/Coords";
-import { useModal } from "./context/modal/ModalContext";
-import { useCachedCities } from "./hooks/cachedCities";
-import ForecastCoords from "./components/forecast/Coords";
+import ForecastCity from "@/components/forecast/City";
+import { useCachedCities } from "@/hooks/cachedCities";
+import WeatherCoords from "@/components/weather/Coords";
+import { useModal } from "@/context/modal/ModalContext";
+import ForecastCoords from "@/components/forecast/Coords";
 import { useState, useRef, type FC, useMemo } from "react";
-import useGeolocation from "./context/geolocation/GeolocationContext";
-import { ForecastSkeleton, WeatherSkeleton } from "./components/Loader";
+import useGeolocation from "@/context/geolocation/GeolocationContext";
+import { ForecastSkeleton, WeatherSkeleton } from "@/components/Loader";
 
 const App: FC = () => {
 

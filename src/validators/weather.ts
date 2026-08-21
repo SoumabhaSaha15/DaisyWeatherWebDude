@@ -53,6 +53,6 @@ export const weatherResponseSchema = z.object({
   id: z.number(),
   name: z.string(),
   cod: z.number(),
-}).strict();
+});
 
 export type WeatherResponse = z.infer<typeof weatherResponseSchema>;
